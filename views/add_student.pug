@@ -1,0 +1,14 @@
+extends layouts 
+
+block content
+  h1 #{name}
+  form(method= 'POST', action='/add_student')
+    #form-group 
+      label Name:
+      input.form-control(name="name", type='text')
+      br
+    #form-group 
+      label Age:
+      input.form-control(name="age", type='text')  
+      br
+    input.btn.btn-primary(type='submit', value='Submit')

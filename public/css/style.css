@@ -1,0 +1,8 @@
+.alert-error {
+  color: brown;
+  background-color: #f2dede;
+}
+.alert-success_msg {
+  color: green;
+  background-color: #dff0d8;
+}

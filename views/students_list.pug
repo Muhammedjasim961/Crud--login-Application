@@ -1,0 +1,9 @@
+extends layouts
+
+block content 
+  h1  Name: #{Student.name}
+  h2= Student.age
+  h3= Student.id
+  a.btn.btn-secondary(href="/edit/"+Student._id) Edit
+  a.btn.btn-danger.delete-student(href='#',data-id=Student._id) Delete
+

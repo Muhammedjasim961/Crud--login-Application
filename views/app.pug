@@ -1,0 +1,8 @@
+extends layouts 
+
+block content 
+  h1  #{title}
+  ul.list-group
+    each student, i in students 
+      li.list-group-item 
+        a(href='/students_list/'+student._id)= student.name

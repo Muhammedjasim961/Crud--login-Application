@@ -1,0 +1,14 @@
+extends layouts 
+
+block content
+  h1 #{title}
+  form(method= 'POST', action='/edit/'+Student._id)
+    #form-group 
+      label name:
+      input.form-control(name="name", type='text', value=Student.name)
+
+    #form-group 
+      label age:
+      input.form-control(name="age", type='text', value=Student.age)  
+      br
+    input.btn.btn-success(type='submit', value='Submit')
