@@ -1,5 +1,7 @@
 "use strict";
 
+require('dotenv').config();
+
 var path = require('path');
 
 var favicon = require('serve-favicon');
@@ -22,19 +24,29 @@ var flash = require('connect-flash');
 
 var localStrategy = require('passport-local').Strategy;
 
-var passport = require('passport');
+var passport = require('passport'); // const config = require('./config/database');
 
-var config = require('./config/database');
 
 var User = require('./models/user');
 
 var app = express(); //nodejs favicon
 
 app.use(favicon(path.join(__dirname, 'public/image', 'node-js.png'))); //mongodb connection Using Mongoose Library
+// mongoose.connection.process.env || 3010;
 
-mongoose.connect(config.database);
 var db = mongoose.connection; //Api Port
-//Check connection
+
+var _require2 = require('mongodb'),
+    MongoClient = _require2.MongoClient;
+
+var uri = process.env.MONGO_URI; // Accessing the MongoDB URI
+
+MongoClient.connect(uri).then(function (client) {
+  console.log('Connected to Database');
+  var db = client.db('betas_students'); // Your code to work with the database goes here
+})["catch"](function (error) {
+  return console.error(error);
+}); //Check connection
 
 db.once('open', function () {
   console.log('MongoDB is connected');
